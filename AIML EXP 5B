@@ -1,0 +1,85 @@
+# Step 1: Import Pandas
+import pandas as pd
+
+# Step 2: Load the dataset
+df = pd.read_csv("titanic.csv")
+
+# Step 3: Display the first 5 rows
+print("First 5 Rows:")
+print(df.head())
+
+# Step 4: Display the shape of the dataset
+print("\nShape of the Dataset:")
+print(df.shape)
+
+#Step 5 :Display column name
+print(df.columns.tolist())
+
+# Step 6: Display data types of each column
+print("Data Types:")
+print(df.dtypes)
+
+# Step 7: Display dataset information
+print("\nDataset Information:")
+df.info()
+
+# Step 8: Display statistical summary
+print("\nStatistical Summary:")
+print(df.describe())
+
+# Step 9: Display statistical summary of all columns
+print("\nStatistical Summary of All Columns:")
+print(df.describe(include='all'))
+
+# Step 10: Check for missing values
+print("Missing Values:")
+print(df.isnull().sum())
+
+# Total number of missing values
+print("\nTotal Missing Values:")
+print(df.isnull().sum().sum())
+
+# Step 11: Check for duplicate records
+print("\nNumber of Duplicate Records:")
+print(df.duplicated().sum())
+
+# Display duplicate records
+print("\nDuplicate Records:")
+print(df[df.duplicated()])
+
+# Step 12:Check missing values in Age
+print("Missing Age values:", df['Age'].isnull().sum())
+
+# Step 13:  Fill missing Age values with median
+df['Age'] = df['Age'].fillna(df['Age'].median())
+
+# Check again
+print("Missing Age values after handling:", df['Age'].isnull().sum())
+
+# Step 14: Check missing values in Embarked
+print("Missing values in Embarked:", df['Embarked'].isnull().sum())
+
+# Fill missing values with mode
+df['Embarked'] = df['Embarked'].fillna(df['Embarked'].mode()[0])
+
+# Check again
+print("Missing values after handling:", df['Embarked'].isnull().sum())
+
+#Step:14 drop the cabin column
+df.drop('Cabin', axis=1, inplace=True)
+df.drop_duplicates(inplace=True)
+
+# Single column
+print("Age Column:")
+print(df['Age'])
+
+# Multiple columns
+print("\nSelected Columns:")
+print(df[['Name', 'Age', 'Sex', 'Survived']])
+
+#sort
+df.sort_values('Fare')
+
+df.sort_values('Age', ascending=False)
+
+
