@@ -1,0 +1,21 @@
+
+# Arithmetic and Statistical Calculations
+
+import numpy as np
+
+# Input numbers
+numbers = [10, 20, 30, 40, 50]
+
+# Arithmetic Operations
+a = 20
+b = 10
+
+print("Addition:", a + b)
+print("Subtraction:", a - b)
+print("Multiplication:", a * b)
+print("Division:", a / b)
+
+# Statistical Calculations
+print("Mean:", np.mean(numbers))
+print("Median:", np.median(numbers))
+print("Standard Deviation:", np.std(numbers))
