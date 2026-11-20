@@ -1,1 +1,35 @@
+                                                                                                                                                                                  from collections import deque
+#graph representation
+graph = {
+    'A': ['B', 'C'],
+    'B': ['D', 'E'],
+    'C': ['F'],
+    'D': [],
+    'E': ['F'],
+    'F': []
+}
+def bfs(graph, start):
+    visited = []
+    queue = [start]
+
+    while queue:
+        node = queue.pop(0)
+        if node not in visited:
+            visited.append(node)
+            neighbours = graph[node]
+
+            for neighbour in neighbours:
+                queue.append(neighbour)
+    return visited
+
+    start = input("Enter the starting node: ")
+    print(bfs(graph, start))
+
+
+
+
+
+
+
+
 
