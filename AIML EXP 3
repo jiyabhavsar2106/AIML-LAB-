@@ -1,0 +1,117 @@
+
+
+board = [" "] * 9
+
+
+# Display the board
+def display_board():
+    print()
+    print(board[0], "|", board[1], "|", board[2])
+    print("--+---+--")
+    print(board[3], "|", board[4], "|", board[5])
+    print("--+---+--")
+    print(board[6], "|", board[7], "|", board[8])
+    print()
+
+
+# Check winner
+def check_winner(player):
+    winning_positions = [
+        (0, 1, 2),
+        (3, 4, 5),
+        (6, 7, 8),
+        (0, 3, 6),
+        (1, 4, 7),
+        (2, 5, 8),
+        (0, 4, 8),
+        (2, 4, 6)
+    ]
+
+    for a, b, c in winning_positions:
+        if board[a] == player and board[b] == player and board[c] == player:
+            return True
+
+    return False
+
+
+# AI move
+def ai_move():
+
+    # Try to win
+    for i in range(9):
+        if board[i] == " ":
+            board[i] = "O"
+
+            if check_winner("O"):
+                return
+
+            board[i] = " "
+
+    # Block the player
+    for i in range(9):
+        if board[i] == " ":
+            board[i] = "X"
+
+            if check_winner("X"):
+                board[i] = "O"
+                return
+
+            board[i] = " "
+
+    # Choose first available position
+    for i in range(9):
+        if board[i] == " ":
+            board[i] = "O"
+            return
+
+
+# Main game
+print("TIC-TAC-TOE AI")
+print("You = X")
+print("AI = O")
+
+while True:
+
+    display_board()
+
+    # Player move
+    position = int(input("Enter position (1-9): ")) - 1
+
+    if position < 0 or position > 8:
+        print("Enter a number between 1 and 9.")
+        continue
+
+    if board[position] != " ":
+        print("Position already occupied!")
+        continue
+
+    board[position] = "X"
+
+    # Check player win
+    if check_winner("X"):
+        display_board()
+        print("You Win!")
+        break
+
+    # Check draw
+    if " " not in board:
+        display_board()
+        print("Draw!")
+        break
+
+    # AI move
+    ai_move()
+
+    print("AI made its move.")
+
+    # Check AI win
+    if check_winner("O"):
+        display_board()
+        print("AI Wins!")
+        break
+
+    # Check draw
+    if " " not in board:
+        display_board()
+        print("Draw!")
+        break
