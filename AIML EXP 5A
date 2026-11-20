@@ -1,0 +1,36 @@
+
+# Implementation of Math, NumPy and SciPy Libraries
+
+# 1. Math Library
+import math
+
+print("MATH LIBRARY")
+print("Square Root:", math.sqrt(25))
+print("Power:", math.pow(2, 3))
+print("Factorial:", math.factorial(5))
+print("Value of Pi:", math.pi)
+
+# 2. NumPy Library
+import numpy as np
+
+print("\nNUMPY LIBRARY")
+
+arr = np.array([10, 20, 30, 40, 50])
+
+print("Array:", arr)
+print("Sum:", np.sum(arr))
+print("Mean:", np.mean(arr))
+print("Maximum:", np.max(arr))
+print("Minimum:", np.min(arr))
+
+# 3. SciPy Library
+from scipy import stats
+
+print("\nSCIPY LIBRARY")
+
+data = [10, 20, 20, 30, 40, 50]
+
+print("Mean:", stats.tmean(data))
+print("Median:", np.median(data))
+print("Mode:", stats.mode(data))
+print("Standard Deviation:", np.std(data))
